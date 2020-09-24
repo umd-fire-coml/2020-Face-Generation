@@ -1,3 +1,7 @@
+# Celeb_A Dataset
+/celeb_a
+/downloads
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
