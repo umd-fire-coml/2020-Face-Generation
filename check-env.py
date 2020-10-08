@@ -1,8 +1,6 @@
-# A dictionary for swapping names of installs and imports
-difNames = {"installName": "importName", "segmentation-models": "segmentation_models"}
+difNames = {"scikit-image" : "skimage","installName": "importName", "segmentation-models": "segmentation_models"}
 
 
-# Tests the given package
 def test_package(package):
     name = package[0]
     if name in difNames.keys():
