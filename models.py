@@ -1,5 +1,5 @@
-from keras.models import Sequential
-from keras.layers import Dense, Reshape, Conv2D, Conv2DTranspose, LeakyReLU
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Reshape, Conv2D, Conv2DTranspose, LeakyReLU
 
 #Define Generator Model
 def define_generator(latent_dim):
