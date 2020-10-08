@@ -1,4 +1,4 @@
-﻿name: face-generation
+name: face-generation
 dependencies:
   - tensorflow=2.0
   - pandas
