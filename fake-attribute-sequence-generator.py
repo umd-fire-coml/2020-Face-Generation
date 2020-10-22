@@ -18,16 +18,3 @@ class FakeAttributeSequenceGenerator(keras.utils.Sequence):
         list2 = np.zeros((self.batchsize,1), dtype = int) 
         
         return list1, list2
-
-
-# In[20]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
