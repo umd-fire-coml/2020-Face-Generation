@@ -1,7 +1,6 @@
 from tensorflow.keras.models import Sequential, Model
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.layers import Input, Dense, Reshape, Conv2D, Conv2DTranspose, Flatten, Dropout, LeakyReLU, BatchNormalization, Activation
-from tensorflow.keras.utils.vis_utils import plot_model
 
 # Define Discriminator Model
 def defineDiscriminator(df, img_size=(192,160)):
