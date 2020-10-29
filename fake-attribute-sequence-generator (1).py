@@ -1,8 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
 
 import tensorflow as tf
 from tensorflow import keras
@@ -26,7 +21,7 @@ class FakeAttributeSequenceGenerator(keras.utils.Sequence):
         return list1, list2
 
 
-# In[ ]:
+
 
 
 
