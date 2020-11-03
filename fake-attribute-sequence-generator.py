@@ -15,6 +15,6 @@ class FakeAttributeSequenceGenerator(keras.utils.Sequence):
         row_add = np.random.uniform(size=(self.batchsize,1))
         list1 = np.concatenate((list0,row_add), axis=1)
         
-        list2 = np.zeros((self.batchsize,1), dtype = int) 
+        list2 = np.ones((self.batchsize,1), dtype = int) 
         
         return list1, list2

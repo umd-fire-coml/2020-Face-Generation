@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 
 from image_sequence_gen import ImageSequenceGenerator
 from fake_attribute_sequence_generator import FakeAttributeSequenceGenerator
+from sl_model import save_model
 
 def make_trainable(model, val):
     model.trainable = val
@@ -28,3 +29,5 @@ def train(genModel, discModel, ganModel, dataset, numEpochs=10, batchSize=32, nu
             g_loss = ganModel.train_on_batch(x, y)
             # summarize loss on this batch
             print('>%d, %d/%d, d=%.3f, g=%.3f' % (i+1, j+1, numBatch, d_loss, g_loss))
+        save_model(discModel, "model/discModel/", epoch_num=i)
+        save_model(genModel, "model/genModel/", epoch_num=i)
