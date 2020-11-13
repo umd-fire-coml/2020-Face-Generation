@@ -195,15 +195,17 @@ class DCGAN():
         fig.savefig("sampleImgs/epoch_%d.png" % epoch)
         plt.close()
         
-    def save_model(self, model, path='models/', epoch_num=0):
-        model.save(path + 'epoch_%s.h5' % epoch_num)
+    def save_model(self, file_path='models/'):
+        self.generator.save(file_path+'gen.h5')
+        self.discriminator.save(file_path+'disc.h5')
 
-
-    def load_model(self, model, path):
-        model.load_weights(path)
-        print("Loaded")
+    def load_model(self, file_path='models/'):
+        self.generator.load_weights(file_path+'gen.h5')
+        print("Loaded generator")
+        self.discriminator.load_weights(file_path+'disc.h5')
+        print("Loaded discriminator")
         
 if __name__ == "__main__":
-    ds = tfds.load('celeb_a', data_dir="./", download=False)
-    dcgan = DCGAN(ds["train"], img_rows=64, img_cols=64, gf=32, df=32)
-    dcgan.train(epochs=100, batch_num=100, batch_size=32, save_interval=1)
+    dcgan = DCGAN(None, img_rows=64, img_cols=64, gf=32, df=32)
+    dcgan.save_model()
+    dcgan.load_model()
