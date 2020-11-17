@@ -23,6 +23,8 @@ class DCGAN():
         self.latent_dim = latent_dim
         self.gf = gf
         self.df = df
+        self.lossMean = [[],[]]
+        self.lossEnd = [[],[]]
 
         dOptimizer = Adam(0.0001, 0.5)
         gOptimizer = Adam(0.0002, 0.5)
@@ -34,16 +36,16 @@ class DCGAN():
         ### Discriminator Model ###
         # Build and compile the discriminator
         self.discriminator = self.build_discriminator()
-        self.discriminator.compile(loss='mse',
+        self.discriminator.compile(loss='binary_crossentropy',
             optimizer=dOptimizer,
             metrics=['accuracy'])
         
         ### Load Models if Given ###
         if path != '':
             if epoch_num < 0:
-                load_model(path='models/')
+                self.load_model(path=path)
             else:
-                load_model(path='models/', epoch_num=epoch_num)
+                self.load_model(path=path, epoch_num=epoch_num)
         
         ### Combined Model: GAN ###
         # The generator takes noise as input and generates imgs
@@ -152,8 +154,8 @@ class DCGAN():
         # Load the datasets
         gDataGen = FakeAttributeSequenceGenerator(batch_size=batch_size, latent_dim=self.latent_dim)
         dDataGen = ImageSequenceGenerator(self.dataset, batch_size, self.generator, image_size=(self.img_rows,self.img_cols))
-        lossMean = [[],[]]
-        lossEnd = [[],[]]
+        self.lossMean = [[],[]]
+        self.lossEnd = [[],[]]
         
         for epoch in range(epochs):
             print ("\n----- Epoch %d -----\n" % (epoch))
@@ -187,13 +189,13 @@ class DCGAN():
                 self.save_model(epoch_num=epoch)
                 
                 loss_temp = np.mean(np.array(loss_temp), axis=1)
-                lossMean[0].append(loss_temp[0])
-                lossMean[1].append(loss_temp[1])
-                lossEnd[0].append(g_loss)
-                lossEnd[1].append(d_loss[0])
+                self.lossMean[0].append(loss_temp[0])
+                self.lossMean[1].append(loss_temp[1])
+                self.lossEnd[0].append(g_loss)
+                self.lossEnd[1].append(d_loss[0])
                 
-        self.loss_plot(lossMean, path='sampleImgs/mean_')
-        self.loss_plot(lossEnd, path='sampleImgs/end_')
+        self.loss_plot(self.lossMean, path='sampleImgs/mean_')
+        self.loss_plot(self.lossEnd, path='sampleImgs/end_')
         
     def save_imgs(self, epoch, path='sampleImgs/'):
         r, c = 5, 5
@@ -254,7 +256,6 @@ class DCGAN():
         plt.plot(epochs[1], label="Disc Loss")
         
         plt.legend(loc='upper left')
-        plt.yticks(np.arange(0, 1.1, 0.1))
         plt.title("Loss over Epochs")
         
         plt.savefig(path + 'lossPlot.png')
@@ -263,5 +264,5 @@ class DCGAN():
             
 if __name__ == "__main__":
     ds = tfds.load('celeb_a', data_dir="./", download=False)
-    dcgan = DCGAN(ds["train"], img_rows=128, img_cols=128, gf=32, df=32)
-    dcgan.train(epochs=100, batch_num=100, batch_size=32, save_interval=1)
+    dcgan = DCGAN(ds["train"], img_rows=128, img_cols=128)
+    dcgan.train(epochs=100, batch_num=100, batch_size=16, save_interval=1)

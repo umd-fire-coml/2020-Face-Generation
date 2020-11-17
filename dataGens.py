@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 
 class ImageSequenceGenerator(Sequence):
-    def __init__(self, dataset, size, model, image_size=(160, 192)):
+    def __init__(self, dataset, size, model, image_size=(64,64)):
         self.data = dataset
         self.batch_size = int(size / 2)
         self.model = model
