@@ -1,4 +1,4 @@
-difNames = {"scikit-image": "skimage", "installName": "importName", "segmentation-models": "segmentation_models", "opencv": "cv2"}
+difNames = {"installName": "importName", "opencv": "cv2"}
 
 
 def test_package(package):

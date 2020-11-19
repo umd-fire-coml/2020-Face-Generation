@@ -1,5 +1,21 @@
 celeb_a
 downloads
+models/*
+#!models/gen_104.h5
+#!models/disc_104.h5
+#!models/gen_107.h5
+#!models/disc_107.h5
+#!models/gen_111.h5
+#!models/disc_111.h5
+#!models/gen_113.h5
+#!models/disc_113.h5
+sampleImgs/*
+!sampleImgs/mean_lossPlot.png
+!sampleImgs/end_lossPlot.png
+!sampleImgs/epoch_104.png
+!sampleImgs/epoch_107.png
+!sampleImgs/epoch_111.png
+!sampleImgs/epoch_113.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
