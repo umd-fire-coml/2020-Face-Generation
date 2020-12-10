@@ -1,6 +1,7 @@
 celeb_a
 downloads
 models/*
+!models/.gitkeep
 #!models/gen_104.h5
 #!models/disc_104.h5
 #!models/gen_107.h5

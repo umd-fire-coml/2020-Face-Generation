@@ -1,8 +1,7 @@
-from keras.layers import Input, Dense, Reshape, Flatten, Dropout
-from keras.layers import BatchNormalization, Activation, ZeroPadding2D
-from keras.layers.advanced_activations import LeakyReLU
-from keras.layers.convolutional import UpSampling2D, Conv2D, Conv2DTranspose
-from keras.models import Sequential, Model, load_model
+from tensorflow.keras.layers import Input, Dense, Reshape, Flatten, Dropout, LeakyReLU
+from tensorflow.keras.layers import BatchNormalization, Activation, ZeroPadding2D
+from tensorflow.keras.layers import UpSampling2D, Conv2D, Conv2DTranspose
+from tensorflow.keras.models import Sequential, Model, load_model
 from tensorflow.keras.optimizers import Adam
 import tensorflow_datasets as tfds
 
@@ -10,6 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import os
 
+from dataset import downloadDataset
 from dataGens import ImageSequenceGenerator, FakeAttributeSequenceGenerator
 
 class DCGAN():
@@ -24,7 +24,6 @@ class DCGAN():
         self.gf = gf
         self.df = df
         self.lossMean = [[],[]]
-        self.lossEnd = [[],[]]
 
         dOptimizer = Adam(0.0001, 0.5)
         gOptimizer = Adam(0.0002, 0.5)
@@ -61,6 +60,7 @@ class DCGAN():
         print("Built GAN Model")
         
     def getBase(self):
+        # Get values for upscaling model layers
         power = 0
         startR = self.img_rows
         startC = self.img_cols
@@ -191,11 +191,8 @@ class DCGAN():
                 loss_temp = np.mean(np.array(loss_temp), axis=1)
                 self.lossMean[0].append(loss_temp[0])
                 self.lossMean[1].append(loss_temp[1])
-                self.lossEnd[0].append(g_loss)
-                self.lossEnd[1].append(d_loss[0])
                 
         self.loss_plot(self.lossMean, path='sampleImgs/mean_')
-        self.loss_plot(self.lossEnd, path='sampleImgs/end_')
         
     def save_imgs(self, epoch, path='sampleImgs/'):
         r, c = 5, 5
@@ -245,8 +242,9 @@ class DCGAN():
                 self.discriminator.load_weights(path+'disc_'+str(epoch_num)+'.h5')
                 
             print("Loaded Generator and Discriminator")
-        except:
+        except Exception as e:
             print("Error: Failed to Load Models")
+            print(e)
             
     def loss_plot(self, epochs, path='sampleImgs/'):
         plt.xlabel('epochs')
@@ -263,6 +261,6 @@ class DCGAN():
             
             
 if __name__ == "__main__":
-    ds = tfds.load('celeb_a', data_dir="./", download=False)
+    ds = downloadDataset(download=False)
     dcgan = DCGAN(ds["train"], img_rows=128, img_cols=128)
     dcgan.train(epochs=100, batch_num=100, batch_size=16, save_interval=1)
