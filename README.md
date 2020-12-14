@@ -16,9 +16,8 @@ In Face Generation project, we defined and trained a Deep Convolutional Generati
 [![YouTube Description](http://img.youtube.com/vi/VH3ndNVXptg/0.jpg)](http://www.youtube.com/watch?v=VH3ndNVXptg "Try here")
 
 ## Citations
-
 Karras, T, 2018, Progressive Growing of GANS, GitHub repository.
 https://github.com/tkarrasprogressive_growing_of_gans.
 
-Kehl, Cavor and Linder-Norén, E 2018, Keras-GAN, GitHub repository.
+Kehl, C and Linder-Norén, E 2018, Keras-GAN, GitHub repository.
 https://github.com/YongWookHa/DCGAN-Keras/blob/master/main.py
