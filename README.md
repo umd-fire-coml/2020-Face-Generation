@@ -8,7 +8,7 @@ In Face Generation project, we defined and trained a Deep Convolutional Generati
 
 ## Directory Guide
 * check-env.py - Verify the enviornment to run the code, making sure every all the package needed are installed and functional.
-* data_validator.ipynb - Notebook visualizing the results.
+* data_validator.ipynb - Notebook visualizing the dataset.
 * dataGens.py - Generate fake attributes randomly and image sequence from the data given.
 * dataset.py - Loads all data in a directory in a batch.
 * dcgan.py - Main training file. Generates and trains our facial recognition software with the built generator and dataset.
