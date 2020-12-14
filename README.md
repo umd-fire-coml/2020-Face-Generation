@@ -13,6 +13,9 @@ In Face Generation project, we defined and trained a Deep Convolutional Generati
 * dataset.py - Loads all data in a directory in a batch.
 * dcgan.py - Main training file. Generates and trains our facial recognition software with the built generator and dataset.
 
+## Testing and Visualizing Results
+For testing and visualizing results run data_validator.ipynb 
+
 ## Citations
 Karras, T, 2018, Progressive Growing of GANS, GitHub repository.
 https://github.com/tkarrasprogressive_growing_of_gans.
