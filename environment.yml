@@ -1,13 +1,8 @@
 name: face-generation
 dependencies:
-  - tensorflow=2.0
-  - pandas
-  - opencv
-  - matplotlib
+  - tensorflow=2.0.0
+  - tensorflow-datasets
   - jupyterlab
-  - scikit-image
-  - tqdm
-  - pip
-  - pip:
-      - segmentation-models
-      - albumentations
+  - matplotlib
+  - opencv
+  - numpy
