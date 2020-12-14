@@ -15,7 +15,24 @@ In Face Generation project, we defined and trained a Deep Convolutional Generati
 * testing.ipynb - Testing notebook for testing and visualizing the results.
 
 ## Step-by-step instruction
-Use dataset.py to download the dataset and dcgan.py to start training.
+1. Clone the project locally (In a terminal)
+   * `git clone https://github.com/umd-fire-coml/2020-Face-Generation`
+2. Enter the 2020-Face-Generation folder
+   * `cd 2020-Face-Generation`
+3. Create a Conda environment using the environment.yml file
+   * `conda env create -f environment.yml`
+4. Activate the Conda environment
+   * `conda activate face-generation`
+5. Run the environment checker in the current directory to check if the environment has required packages installed
+   * `python check_env.py`
+6. Run the file downloader to download the dataset
+   * `check-env.py`
+7. Run the data checker script to check if the data is correctly downloaded
+   * `python dataset.py`
+8. Run the data validation script to check if the data is valid
+   * `data_validator.ipynb`
+9. Run the training script. This uses the data generator to generate input data, builds the model, and trains it. 
+   * `python dcgan.py`
 
 ## Testing and Visualizing Results
 For testing and visualizing results run data_validator.ipynb 
