@@ -44,4 +44,4 @@ Karras, Tero & Aila, Temo & Laine, Samuli & Lehtinen, Jaakko, 2017, Progressive 
 
 Liu, Ziwei & Luo, Ping & Wang, Xiaogang, & Tang, Xiaoou, 2015, Deep Learning Face Attributes in the Wild, Dataset, http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html.
 
-YongWook, Ha, 2018, Keras-GAN, GitHub repository, https://github.com/YongWookHa/DCGAN-Keras/blob/master/main.py.
+YongWook, Ha, 2018, Keras-GAN, GitHub repository, https://github.com/YongWookHa/DCGAN-Keras.
